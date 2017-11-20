@@ -6,22 +6,23 @@ import java.awt.event.ActionListener;
 public class CommonGUI extends JFrame{
     JScrollPane chatScPane;
     JTextArea chatTextArea;
-    JTextField ipField;
+    JTextField ipTextField;
     JLabel ipLabel;
     JScrollPane messageScPane;
     JTextArea messageTextArea;
     JLabel onlineUsersLabel;
     JScrollPane onlineUsersScPane;
     JTextArea onlineUsersTextArea;
-    JTextField portField;
+    JTextField portTextField;
     JLabel portLabel;
     JButton sendButton;
+    Message message;
     public CommonGUI() {
         ipLabel = new JLabel();
         onlineUsersLabel = new JLabel();
         portLabel = new JLabel();
-        ipField = new JTextField();
-        portField = new JTextField();
+        ipTextField = new JTextField();
+        portTextField = new JTextField();
         sendButton = new JButton();
         chatScPane = new JScrollPane();
         chatTextArea = new JTextArea();
@@ -63,7 +64,7 @@ public class CommonGUI extends JFrame{
         onlineUsersScPane.setViewportView(onlineUsersTextArea);
 
         messageTextArea.setColumns(20);
-        messageTextArea.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        messageTextArea.setFont(new Font("Arial", 0, 14)); // NOI18N
         messageTextArea.setLineWrap(true);
         messageTextArea.setRows(5);
         messageTextArea.setToolTipText("");
@@ -73,7 +74,10 @@ public class CommonGUI extends JFrame{
     }
     public class sendButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            String msg = chatTextArea.getText();
 
+            chatTextArea.setText("");
+            chatTextArea.requestFocus();
         }
     }
 }

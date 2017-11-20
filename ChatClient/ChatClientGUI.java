@@ -1,18 +1,36 @@
+import com.sun.org.apache.xml.internal.security.c14n.implementations.Canonicalizer20010315ExclWithComments;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ConnectException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.ArrayList;
 
-public class ClientGUI extends CommonGUI {
+public class ChatClientGUI extends CommonGUI {
     private JButton connectButton;
     private JButton disconnectButton;
     private JTextField usernameField;
     private JLabel usernameLabel;
+    private Message message;
 
-    public ClientGUI() {
+    String username;
+    Socket socket;
+    ObjectOutputStream objectOutputStream;
+    ObjectInputStream objectInputStream;
+    String[] userList;
+    Boolean isConnected = false;
 
+
+    public ChatClientGUI() {
         initComponents();
     }
+
     private void initComponents() {
 
         usernameLabel = new JLabel();
@@ -21,6 +39,9 @@ public class ClientGUI extends CommonGUI {
         disconnectButton = new JButton();
 
         setSize(new Dimension(0, 0));
+
+        portTextField.setText("5000");
+        portTextField.setEditable(false);
 
         usernameLabel.setFont(new Font("Arial", 0, 12));
         usernameLabel.setText("Username");
@@ -57,8 +78,8 @@ public class ClientGUI extends CommonGUI {
                                                                         .addComponent(portLabel))
                                                                 .addGap(52, 52, 52)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(ipField)
-                                                                        .addComponent(portField))))
+                                                                        .addComponent(ipTextField)
+                                                                        .addComponent(portTextField))))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(connectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -86,11 +107,11 @@ public class ClientGUI extends CommonGUI {
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                         .addComponent(ipLabel)
-                                                                        .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(ipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                         .addComponent(portLabel)
-                                                                        .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                        .addComponent(portTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(chatScPane, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -106,10 +127,50 @@ public class ClientGUI extends CommonGUI {
 
         pack();
     }
+
+    private void setUpNetworking() throws ConnectException{
+        try {
+            socket = new Socket(getIP(),getPORT());
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            isConnected = true;
+            objectOutputStream.writeObject(new Message(username,"has been connected\n",isConnected));
+            Thread threadListener = new Thread(new IncomingReader());
+            threadListener.start();
+        }catch(IOException e) {
+            throw new ConnectException();
+        }
+    }
+
+    public  class IncomingReader implements Runnable {
+        public void run() {
+            try{
+                while((message = (Message) objectInputStream.readObject())!=null) {
+                    if(message.getIsConnected()) {
+                        onlineUsersTextArea.append(message.getUsername()+"\n");
+                    }
+                    chatTextArea.append(message.getUsername() + message.getMessage());
+                }
+            }catch(Exception e) {}
+        }
+    }
+
+    private String getIP() {
+        return ipTextField.getText();
+    }
+
+    private int getPORT() {
+        return Integer.parseInt(portTextField.getText());
+    }
+
     public class connectButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String ip = ipField.getText();
-            ipField.setText("");
+            try {
+                setUpNetworking();
+                //ipTextField.setText(InetAddress.getLocalHost().getHostAddress());
+            }catch(ConnectException a) {
+                a.printStackTrace();
+            }
 
         }
     }
@@ -128,13 +189,13 @@ public class ClientGUI extends CommonGUI {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -142,7 +203,7 @@ public class ClientGUI extends CommonGUI {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientGUI().setVisible(true);
+                new ChatClientGUI().setVisible(true);
             }
         });
     }
