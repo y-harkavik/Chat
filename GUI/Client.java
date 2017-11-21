@@ -3,12 +3,19 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class Client {
+    private String username;
     private Socket socket;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
 
     public Client(Socket socket){
-        this.socket = socket;
+        try {
+            this.socket = socket;
+            this.oos = new ObjectOutputStream(socket.getOutputStream());
+            this.ois = new ObjectInputStream(socket.getInputStream());
+        }catch(Exception e) {
+
+        }
     }
 
     public Client(Socket socket , ObjectOutputStream oos , ObjectInputStream ois ){
@@ -27,6 +34,14 @@ public class Client {
 
     public ObjectInputStream getThisObjectInputStream() {
         return this.ois;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setThisObjectOutputStream(ObjectOutputStream oos) {

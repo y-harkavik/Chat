@@ -1,10 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ServerGUI extends CommonGUI {
-    ArrayList<Client> userList;
-
+   ArrayList<Client> userList;
 
     public ServerGUI() {
         initComponents();
@@ -16,6 +22,11 @@ public class ServerGUI extends CommonGUI {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new Dimension(515, 652));
+
+
+        try {
+            ipTextField.setText(InetAddress.getLocalHost().getHostAddress());
+        }catch(Exception e) {}
 
         ipTextField.setEditable(false);
         portTextField.setEditable(false);
@@ -74,8 +85,48 @@ public class ServerGUI extends CommonGUI {
                                         .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
+        this.startServer();
     }
 
+    public class ClientHandler implements Runnable {
+        Client client;
+
+        public ClientHandler(Client c) {
+            client = c;
+        }
+        public void run() {
+            try{
+                while((message = (Message) client.getThisObjectInputStream().readObject())!=null) {
+                    if(message.getTypeOfMessage()==1) {
+                        client.setUsername(message.getUsername());
+                        onlineUsersTextArea.setText("");
+                        for (String user : message.getUsers()) {
+                            onlineUsersTextArea.append(user + "\n");
+                        }
+                    }
+                    chatTextArea.append(message.getUsername() + message.getMessage());
+                }
+            }catch(Exception e) {}
+        }
+    }
+
+    private void broadcast(String message) {
+    }
+
+    public void startServer() {
+        try {
+            ServerSocket socketListener = new ServerSocket(5000);
+            while(true) {
+                Socket clientSocket = socketListener.accept();
+                Client client = new Client(clientSocket);
+                Thread t = new Thread( new ClientHandler(client));
+                t.start();
+                userList.add(client);
+            }
+        }catch(Exception e) {
+
+        }
+    }
 
 
     public static void main(String args[]) {

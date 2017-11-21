@@ -50,7 +50,6 @@ public class CommonGUI extends JFrame{
         sendButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         sendButton.setText("Send");
         sendButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        sendButton.addActionListener(new sendButtonListener());
 
         chatTextArea.setEditable(false);
         chatTextArea.setColumns(20);
@@ -72,12 +71,5 @@ public class CommonGUI extends JFrame{
         messageScPane.setViewportView(messageTextArea);
 
     }
-    public class sendButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            String msg = chatTextArea.getText();
 
-            chatTextArea.setText("");
-            chatTextArea.requestFocus();
-        }
-    }
 }

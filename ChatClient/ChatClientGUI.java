@@ -51,6 +51,8 @@ public class ChatClientGUI extends CommonGUI {
         connectButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         connectButton.addActionListener(new connectButtonListener());
 
+        sendButton.addActionListener(new sendButtonListener());
+
 
         disconnectButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         disconnectButton.setText("Disconnect");
@@ -131,25 +133,27 @@ public class ChatClientGUI extends CommonGUI {
     private void setUpNetworking() throws ConnectException{
         try {
             socket = new Socket(getIP(),getPORT());
-            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            isConnected = true;
-            objectOutputStream.writeObject(new Message(username,"has been connected\n",isConnected));
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            sendMessage(new Message(username,"has been connected\n",1));
             Thread threadListener = new Thread(new IncomingReader());
             threadListener.start();
         }catch(IOException e) {
             throw new ConnectException();
         }
     }
-
     public  class IncomingReader implements Runnable {
         public void run() {
             try{
                 while((message = (Message) objectInputStream.readObject())!=null) {
-                    if(message.getIsConnected()) {
-                        onlineUsersTextArea.append(message.getUsername()+"\n");
+                    if(message.getTypeOfMessage()!=0) {
+                        onlineUsersTextArea.setText("");
+                        userList = message.getUsers();
+                        for (String user : userList) {
+                            onlineUsersTextArea.append(user + "\n");
+                        }
                     }
-                    chatTextArea.append(message.getUsername() + message.getMessage());
+                    chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage());
                 }
             }catch(Exception e) {}
         }
@@ -165,21 +169,53 @@ public class ChatClientGUI extends CommonGUI {
 
     public class connectButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            try {
-                setUpNetworking();
-                //ipTextField.setText(InetAddress.getLocalHost().getHostAddress());
-            }catch(ConnectException a) {
-                a.printStackTrace();
+            if(socket.isConnected()) {
+                try {
+                    setUpNetworking();
+                    setStateOfField(true);
+                } catch (ConnectException a) {
+                    chatTextArea.append("Connect error\n");
+                    //a.printStackTrace();
+                }
             }
-
         }
     }
+    public class sendButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if(socket.isConnected()) {
+                sendMessage(new Message(username,messageTextArea.getText(),0));
+            }
+                messageTextArea.setText("");
+            messageTextArea.requestFocus();
+        }
+    }
+
     public class disconnectionButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            if(socket.isConnected()) {
+                try {
+                    sendMessage(new Message(username,"has been disconnected\n",2));
+                    socket.close();
+                    setStateOfField(true);
+                    onlineUsersTextArea.setText("");
+                }catch (Exception f) {
 
+                }
+            }
         }
     }
-
+    public void sendMessage(Message message) {
+            try {
+                objectOutputStream.writeObject(message);
+            } catch (IOException ex) {
+                chatTextArea.append("Error\n");
+            }
+    }
+    public void setStateOfField(boolean state) {
+        ipTextField.setEditable(state);
+        portTextField.setEditable(state);
+        usernameField.setEditable(state);
+    }
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
