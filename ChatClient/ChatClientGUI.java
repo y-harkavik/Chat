@@ -135,7 +135,8 @@ public class ChatClientGUI extends CommonGUI {
             socket = new Socket(getIP(),getPORT());
             objectInputStream = new ObjectInputStream(socket.getInputStream());
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            sendMessage(new Message(username,"has been connected\n",1));
+            boolean a = socket.isConnected();
+            sendMessage(new Message(usernameField.getText(),"has been connected\n",1));
             Thread threadListener = new Thread(new IncomingReader());
             threadListener.start();
         }catch(IOException e) {
@@ -148,12 +149,8 @@ public class ChatClientGUI extends CommonGUI {
                 while((message = (Message) objectInputStream.readObject())!=null) {
                     if(message.getTypeOfMessage()!=0) {
                         onlineUsersTextArea.setText("");
-                        userList = message.getUsers();
-                        for (String user : userList) {
-                            onlineUsersTextArea.append(user + "\n");
-                        }
                     }
-                    chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage());
+                    chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
                 }
             }catch(Exception e) {}
         }
@@ -169,10 +166,11 @@ public class ChatClientGUI extends CommonGUI {
 
     public class connectButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(socket.isConnected()) {
+            if(!isConnected ){
                 try {
+                    isConnected = true;
                     setUpNetworking();
-                    setStateOfField(true);
+                    setStateOfField(false);
                 } catch (ConnectException a) {
                     chatTextArea.append("Connect error\n");
                     //a.printStackTrace();
@@ -182,17 +180,17 @@ public class ChatClientGUI extends CommonGUI {
     }
     public class sendButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(socket.isConnected()) {
+            if(isConnected) {
                 sendMessage(new Message(username,messageTextArea.getText(),0));
             }
-                messageTextArea.setText("");
+            messageTextArea.setText("");
             messageTextArea.requestFocus();
         }
     }
 
     public class disconnectionButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(socket.isConnected()) {
+            if(isConnected) {
                 try {
                     sendMessage(new Message(username,"has been disconnected\n",2));
                     socket.close();
@@ -206,9 +204,10 @@ public class ChatClientGUI extends CommonGUI {
     }
     public void sendMessage(Message message) {
             try {
+                boolean a = socket.isConnected();
                 objectOutputStream.writeObject(message);
             } catch (IOException ex) {
-                chatTextArea.append("Error\n");
+                chatTextArea.append("hui\n");
             }
     }
     public void setStateOfField(boolean state) {

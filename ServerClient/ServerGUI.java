@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -26,10 +28,13 @@ public class ServerGUI extends CommonGUI {
 
         try {
             ipTextField.setText(InetAddress.getLocalHost().getHostAddress());
+            portTextField.setText("5000");
         }catch(Exception e) {}
 
         ipTextField.setEditable(false);
         portTextField.setEditable(false);
+
+        sendButton.addActionListener(new sendButtonListener());
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,36 +105,57 @@ public class ServerGUI extends CommonGUI {
                     if(message.getTypeOfMessage()==1) {
                         client.setUsername(message.getUsername());
                         onlineUsersTextArea.setText("");
-                        for (String user : message.getUsers()) {
-                            onlineUsersTextArea.append(user + "\n");
+                        for (Client user : userList) {
+                            onlineUsersTextArea.append(user.getUsername() + "\n");
                         }
+                        broadcast(message);
                     }
-                    chatTextArea.append(message.getUsername() + message.getMessage());
+                    chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
                 }
-            }catch(Exception e) {}
+            }catch(Exception e) {
+
+            }
         }
     }
+    private void broadcast(Message message) {
+        for(Client client:userList) {
+            try {
+                client.getThisObjectOutputStream().writeObject(message);
+            }catch(Exception e) {
 
-    private void broadcast(String message) {
+            }
+        }
     }
 
     public void startServer() {
         try {
+            this.setVisible(true);
+            userList = new ArrayList<Client>();
             ServerSocket socketListener = new ServerSocket(5000);
             while(true) {
                 Socket clientSocket = socketListener.accept();
                 Client client = new Client(clientSocket);
+                userList.add(client);
                 Thread t = new Thread( new ClientHandler(client));
                 t.start();
-                userList.add(client);
             }
         }catch(Exception e) {
 
         }
     }
+    public class sendButtonListener implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Message message = new Message("Server",messageTextArea.getText());
+            messageTextArea.setText("");
+            messageTextArea.requestFocus();
+            broadcast(message);
+        }
+    }
 
     public static void main(String args[]) {
+        new ServerGUI().setVisible(true);
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
