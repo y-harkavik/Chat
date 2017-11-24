@@ -71,5 +71,4 @@ public class CommonGUI extends JFrame{
         messageScPane.setViewportView(messageTextArea);
 
     }
-
 }
