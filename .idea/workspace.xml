@@ -10,18 +10,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Chat$Menu.coverage" NAME="Menu Coverage Results" MODIFIED="1511638559059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Chat$qw.coverage" NAME="qw Coverage Results" MODIFIED="1511640512091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="ChatClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ChatClient/ChatClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="153" column="10" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+            <state relative-caret-position="294">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
                 <element signature="e#624#625#0" expanded="true" />
-                <element signature="e#656#657#0" expanded="true" />
-                <element signature="e#896#1747#0" expanded="true" />
-                <element signature="e#1746#1747#0" expanded="true" />
                 <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
                 <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
                 <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -29,8 +30,6 @@
                 <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
                 <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
                 <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-                <element signature="e#14850#14851#0" expanded="true" />
-                <element signature="e#14915#14916#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,38 +47,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="188" column="0" lean-forward="true" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+            <state relative-caret-position="-235">
+              <caret line="109" column="0" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#475#1021#0" expanded="true" />
-                <element signature="e#1020#1021#0" expanded="true" />
+                <element signature="e#234#235#0" expanded="true" />
+                <element signature="e#266#267#0" expanded="true" />
                 <element signature="class#ClientHandler#0;class#Server#0" expanded="false" />
-                <element signature="e#7387#7388#0" expanded="true" />
-                <element signature="e#7421#7422#0" expanded="true" />
                 <element signature="method#broadcast#0;class#Server#0" expanded="false" />
                 <element signature="class#sendButtonListener#0;class#Server#0" expanded="false" />
                 <element signature="method#actionPerformed#0;class#sendButtonListener#0;class#Server#0" expanded="false" />
                 <element signature="method#setOnlineUsers#0;class#Server#0" expanded="false" />
-                <element signature="e#10298#10299#0" expanded="true" />
-                <element signature="e#10326#10327#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUI/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="175">
+              <caret line="46" column="51" lean-forward="true" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3489#3490#0" expanded="true" />
-                <element signature="e#3515#3516#0" expanded="true" />
+                <element signature="e#1427#1428#0" expanded="true" />
+                <element signature="e#1501#1502#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,13 +83,10 @@
       <file leaf-file-name="UsersList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/UsersList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
+            <state relative-caret-position="651">
               <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#193#201#0" expanded="true" />
-                <element signature="e#1033#1041#0" expanded="true" />
-                <element signature="e#1312#1320#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,7 +95,7 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
+            <state relative-caret-position="378">
               <caret line="22" column="50" lean-forward="false" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -119,7 +111,7 @@
       <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="63">
               <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
               <folding>
                 <element signature="e#687#688#0" expanded="true" />
@@ -170,15 +162,19 @@
         <option value="$PROJECT_DIR$/GUI/Message.java" />
         <option value="$PROJECT_DIR$/Server/ServerGUI.java" />
         <option value="$PROJECT_DIR$/ChatClient/ChatClientGUI.java" />
-        <option value="$PROJECT_DIR$/GUI/Menu.java" />
+        <option value="$PROJECT_DIR$/GUI/kk.java" />
         <option value="$PROJECT_DIR$/ChatClient/ChatClient.java" />
+        <option value="$PROJECT_DIR$/GUI/Menu2.kt" />
+        <option value="$PROJECT_DIR$/GUI/Menu2.java" />
         <option value="$PROJECT_DIR$/Server/Server.java" />
+        <option value="$PROJECT_DIR$/GUI/qw.java" />
+        <option value="$PROJECT_DIR$/GUI/Menu.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="21" />
+    <option name="x" value="646" />
+    <option name="y" value="59" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -210,6 +206,11 @@
             <path>
               <item name="Chat" type="b2602c69:ProjectViewProjectNode" />
               <item name="Chat" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Chat" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Chat" type="462c0819:PsiDirectoryNode" />
               <item name="ChatClient" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -226,10 +227,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,37 +262,23 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Menu">
-    <configuration name="ChatClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="ChatClient" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Chat" />
-      <envs />
-    </configuration>
-    <configuration name="ClientGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="ClientGUI" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Chat" />
-      <envs />
-    </configuration>
     <configuration name="Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Menu" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Chat" />
+      <envs />
+    </configuration>
+    <configuration name="Menu2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Menu2" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -398,18 +385,48 @@
       <properties />
       <listeners />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.ClientGUI" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ServerGUI" />
-      <item index="2" class="java.lang.String" itemvalue="Application.ChatClientGUI" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Menu" />
+    <configuration name="kk" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="kk" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Chat" />
+      <envs />
+    </configuration>
+    <configuration name="qw" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="qw" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Chat" />
+      <envs />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.Menu" />
+      <item index="1" class="java.lang.String" itemvalue="Application.qw" />
+      <item index="2" class="java.lang.String" itemvalue="Application.kk" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Menu2" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Server" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Menu" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ServerGUI" />
-        <item index="2" class="java.lang.String" itemvalue="Application.ChatClientGUI" />
-        <item index="3" class="java.lang.String" itemvalue="Application.ClientGUI" />
+        <item index="1" class="java.lang.String" itemvalue="Application.qw" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Server" />
+        <item index="3" class="java.lang.String" itemvalue="Application.kk" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Menu2" />
       </list>
     </recent_temporary>
   </component>
@@ -428,7 +445,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -438,12 +454,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3006536" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29847494" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -468,75 +485,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/GUI/Menu.java</url>
-          <line>72</line>
-          <properties />
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="77" />
+      <option name="time" value="87" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#475#1021#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="class#ClientHandler#0;class#Server#0" expanded="false" />
-            <element signature="e#7387#7388#0" expanded="true" />
-            <element signature="e#7421#7422#0" expanded="true" />
-            <element signature="method#broadcast#0;class#Server#0" expanded="false" />
-            <element signature="class#sendButtonListener#0;class#Server#0" expanded="false" />
-            <element signature="method#actionPerformed#0;class#sendButtonListener#0;class#Server#0" expanded="false" />
-            <element signature="method#setOnlineUsers#0;class#Server#0" expanded="false" />
-            <element signature="e#10298#10299#0" expanded="true" />
-            <element signature="e#10326#10327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GUI/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="61" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/UsersList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="44" column="3" lean-forward="false" selection-start-line="44" selection-start-column="3" selection-end-line="44" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#193#201#0" expanded="true" />
-            <element signature="e#1033#1041#0" expanded="true" />
-            <element signature="e#1312#1320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#411#412#0" expanded="true" />
-            <element signature="e#453#454#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1495#1496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
@@ -555,9 +508,6 @@
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -565,8 +515,6 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -587,17 +535,13 @@
           <caret line="161" column="18" lean-forward="true" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#475#1021#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
             <element signature="class#ClientHandler#0;class#Server#0" expanded="false" />
-            <element signature="e#7387#7388#0" expanded="true" />
-            <element signature="e#7421#7422#0" expanded="true" />
             <element signature="method#broadcast#0;class#Server#0" expanded="false" />
             <element signature="class#sendButtonListener#0;class#Server#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#sendButtonListener#0;class#Server#0" expanded="false" />
             <element signature="method#setOnlineUsers#0;class#Server#0" expanded="false" />
-            <element signature="e#10298#10299#0" expanded="true" />
-            <element signature="e#10326#10327#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -615,9 +559,6 @@
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -625,8 +566,6 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -647,17 +586,13 @@
           <caret line="155" column="13" lean-forward="true" selection-start-line="155" selection-start-column="13" selection-end-line="155" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#475#1021#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
             <element signature="class#ClientHandler#0;class#Server#0" expanded="false" />
-            <element signature="e#7387#7388#0" expanded="true" />
-            <element signature="e#7421#7422#0" expanded="true" />
             <element signature="method#broadcast#0;class#Server#0" expanded="false" />
             <element signature="class#sendButtonListener#0;class#Server#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#sendButtonListener#0;class#Server#0" expanded="false" />
             <element signature="method#setOnlineUsers#0;class#Server#0" expanded="false" />
-            <element signature="e#10298#10299#0" expanded="true" />
-            <element signature="e#10326#10327#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -668,9 +603,6 @@
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -678,8 +610,6 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -700,9 +630,6 @@
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -710,8 +637,6 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -732,9 +657,6 @@
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -742,8 +664,6 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -802,9 +722,6 @@
           <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -812,8 +729,6 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -845,9 +760,6 @@
           <caret line="197" column="45" lean-forward="true" selection-start-line="197" selection-start-column="45" selection-end-line="197" selection-end-column="45" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -855,8 +767,6 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -922,35 +832,32 @@
         <state relative-caret-position="168">
           <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#624#625#0" expanded="true" />
+            <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
+            <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
+            <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
+            <element signature="class#sendButtonListener#0;class#ChatClient#0" expanded="false" />
+            <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
+            <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
+            <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GUI/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="20" column="61" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/Config.java" />
     <entry file="file://$PROJECT_DIR$/Source/UsersList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
+        <state relative-caret-position="651">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#193#201#0" expanded="true" />
-            <element signature="e#1033#1041#0" expanded="true" />
-            <element signature="e#1312#1320#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
+        <state relative-caret-position="378">
           <caret line="22" column="50" lean-forward="false" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -964,7 +871,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
+        <state relative-caret-position="63">
           <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
           <folding>
             <element signature="e#687#688#0" expanded="true" />
@@ -983,27 +890,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GUI/Menu.java">
+    <entry file="file://$PROJECT_DIR$/GUI/Menu2.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3489#3490#0" expanded="true" />
-            <element signature="e#3515#3516#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ChatClient/ChatClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="153" column="10" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state relative-caret-position="294">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#896#1747#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
             <element signature="method#setUpNetworking#0;class#ChatClient#0" expanded="false" />
             <element signature="class#IncomingReader#0;class#ChatClient#0" expanded="false" />
             <element signature="class#connectButtonListener#0;class#ChatClient#0" expanded="false" />
@@ -1011,29 +911,59 @@
             <element signature="class#disconnectionButtonListener#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#setStateOfField#0;class#ChatClient#0" expanded="false" />
-            <element signature="e#14850#14851#0" expanded="true" />
-            <element signature="e#14915#14916#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/kk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="188" column="0" lean-forward="true" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+        <state relative-caret-position="-235">
+          <caret line="109" column="0" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="109" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#475#1021#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
             <element signature="class#ClientHandler#0;class#Server#0" expanded="false" />
-            <element signature="e#7387#7388#0" expanded="true" />
-            <element signature="e#7421#7422#0" expanded="true" />
             <element signature="method#broadcast#0;class#Server#0" expanded="false" />
             <element signature="class#sendButtonListener#0;class#Server#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#sendButtonListener#0;class#Server#0" expanded="false" />
             <element signature="method#setOnlineUsers#0;class#Server#0" expanded="false" />
-            <element signature="e#10298#10299#0" expanded="true" />
-            <element signature="e#10326#10327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/qw.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/Menu2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="111" column="1" lean-forward="false" selection-start-line="111" selection-start-column="1" selection-end-line="111" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="46" column="51" lean-forward="true" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1427#1428#0" expanded="true" />
+            <element signature="e#1501#1502#0" expanded="true" />
           </folding>
         </state>
       </provider>

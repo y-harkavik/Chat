@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.server.ServerCloneException;
 
 public class Menu extends JFrame {
 
@@ -37,7 +38,21 @@ public class Menu extends JFrame {
         clientRadioButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         startButton.setText("Start");
-        startButton.addActionListener(new startButtonListener());
+        startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(serverRadioButton.isSelected()){
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new Server().startServer();
+                    }
+                });
+                t.start();
+            } else if(clientRadioButton.isSelected()) {
+                    new ChatClient();
+                }
+            }
+        });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,21 +78,16 @@ public class Menu extends JFrame {
                                 .addContainerGap(56, Short.MAX_VALUE))
         );
         setVisible(true);
+        //new Server();
         pack();
     }
 
-    public class startButtonListener implements ActionListener {
+    /*public class startButtonListener implements ActionListener{
 
         public void actionPerformed(ActionEvent e) {
-           if(serverRadioButton.isSelected()) {
-               setVisible(false);
-               new Server();
-           } else if(clientRadioButton.isSelected()) {
-               setVisible(false);
-               new ChatClient();
-           }
+            new Server().startServer();
         }
-    }
+    }*/
 
     public static void main(String args[]) {
         new Menu();
