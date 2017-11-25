@@ -13,7 +13,7 @@ public class Client {
         return getUsername().equals(a.getUsername());
     }
 
-    public int hashcode() {
+    public int hashCode() {
         return username.hashCode();
     }
 

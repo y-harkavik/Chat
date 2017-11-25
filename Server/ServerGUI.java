@@ -105,14 +105,15 @@ public class ServerGUI extends CommonGUI {
                     if(message.getTypeOfMessage()==1) {
                         client.setUsername(message.getUsername());
                         if(!userList.addUser(client)) {
-                            client.getThisObjectOutputStream().writeObject(new Message("Server","User with this nickname already connected",0));
+                            client.getThisObjectOutputStream().writeObject(new Message("Server","User with this nickname already connected",-1));
                             client.getThisObjectOutputStream().close();
                             client.getThisObjectInputStream().close();
                             break;
                         }
                     }else if(message.getTypeOfMessage()==2) {
                         userList.deleteUser(client);
-                        broadcast(new Message("Server",message.getUsername()+" "+message.getMessage(),0));
+                        broadcast(new Message("Server",message.getUsername()+" "+message.getMessage(),0,userList.getUsernameList()));
+                        setOnlineUsers();
                         chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
                         break;
                     }
@@ -130,7 +131,7 @@ public class ServerGUI extends CommonGUI {
             try {
                 client.getThisObjectOutputStream().writeObject(message);
             }catch(Exception e) {
-
+                int a = 4;
             }
         }
     }
@@ -153,7 +154,7 @@ public class ServerGUI extends CommonGUI {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Message message = new Message("Server",messageTextArea.getText(),0);
+            Message message = new Message("Server",messageTextArea.getText(),0,userList.getUsernameList());
             messageTextArea.setText("");
             messageTextArea.requestFocus();
             broadcast(message);
