@@ -31,8 +31,8 @@ public class CommonGUI extends JFrame{
         messageScPane = new JScrollPane();
         messageTextArea = new JTextArea();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Chat");
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setTitle("Chat by Servilat");
         setAutoRequestFocus(false);
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         setResizable(false);

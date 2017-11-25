@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/GUI" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ChatClient" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

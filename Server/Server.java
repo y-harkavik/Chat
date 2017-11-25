@@ -1,20 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.awt.event.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashSet;
 
-public class ServerGUI extends CommonGUI {
+public class Server extends CommonGUI {
    UsersList userList;
 
-    public ServerGUI() {
+    public Server() {
         userList = new UsersList();
         initComponents();
         startServer();
@@ -22,9 +16,23 @@ public class ServerGUI extends CommonGUI {
 
     private void initComponents() {
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new Dimension(515, 652));
+
+        WindowListener exitListener = new WindowAdapter() {
+
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showOptionDialog(
+                        null, "Are You Sure to Close Application?",
+                        "Exit Confirmation", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE, null, null, null);
+                if (confirm == 0) {
+                    broadcast(new Message("Server","i'm dead",-1,new String[0]));
+                    System.exit(0);
+                }
+            }
+        };
+        addWindowListener(exitListener);
 
         try {
             ipTextField.setText(InetAddress.getLocalHost().getHostAddress());
@@ -90,6 +98,17 @@ public class ServerGUI extends CommonGUI {
                                         .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex) {}
+        pack();
+        setVisible(true);
+        //startServer();
     }
 
     public class ClientHandler implements Runnable {
@@ -122,7 +141,6 @@ public class ServerGUI extends CommonGUI {
                     chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
                 }
             }catch(Exception e) {
-
             }
         }
     }
@@ -131,14 +149,12 @@ public class ServerGUI extends CommonGUI {
             try {
                 client.getThisObjectOutputStream().writeObject(message);
             }catch(Exception e) {
-                int a = 4;
             }
         }
     }
 
     public void startServer() {
         try {
-            this.setVisible(true);
             ServerSocket socketListener = new ServerSocket(5000);
             while(true) {
                 Socket clientSocket = socketListener.accept();
@@ -151,13 +167,12 @@ public class ServerGUI extends CommonGUI {
         }
     }
     public class sendButtonListener implements ActionListener {
-
-        @Override
         public void actionPerformed(ActionEvent e) {
             Message message = new Message("Server",messageTextArea.getText(),0,userList.getUsernameList());
             messageTextArea.setText("");
             messageTextArea.requestFocus();
             broadcast(message);
+            chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
         }
     }
 
@@ -168,27 +183,6 @@ public class ServerGUI extends CommonGUI {
         }
     }
     public static void main(String args[]) {
-        new ServerGUI().setVisible(true);
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ServerGUI().setVisible(true);
-            }
-        });
+        new Server();
     }
 }

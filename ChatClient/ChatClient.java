@@ -1,18 +1,13 @@
-import com.sun.org.apache.xml.internal.security.c14n.implementations.Canonicalizer20010315ExclWithComments;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ConnectException;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.util.ArrayList;
 
-public class ChatClientGUI extends CommonGUI {
+public class ChatClient extends CommonGUI {
     private JButton connectButton;
     private JButton disconnectButton;
     private JTextField usernameField;
@@ -26,7 +21,7 @@ public class ChatClientGUI extends CommonGUI {
     Boolean isConnected = false;
 
 
-    public ChatClientGUI() {
+    public ChatClient() {
         initComponents();
     }
 
@@ -36,6 +31,28 @@ public class ChatClientGUI extends CommonGUI {
         usernameField = new JTextField();
         connectButton = new JButton();
         disconnectButton = new JButton();
+
+        WindowListener exitListener = new WindowAdapter() {
+
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showOptionDialog(
+                        null, "Are You Sure to Close Application?",
+                        "Exit Confirmation", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE, null, null, null);
+                if (confirm == 0) {
+                    if(isConnected) {
+                        try {
+                            sendMessage(new Message(username, "has been disconnected\n", 2));
+                            objectInputStream.close();
+                            objectInputStream.close();
+                            socket.close();
+                        }catch (Exception ex) {}
+                    }
+                    System.exit(0);
+                }
+            }
+        };
+        addWindowListener(exitListener);
 
         setSize(new Dimension(0, 0));
 
@@ -125,7 +142,15 @@ public class ChatClientGUI extends CommonGUI {
                                                 .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
-
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex) {}
+        setVisible(true);
         pack();
     }
 
@@ -143,6 +168,7 @@ public class ChatClientGUI extends CommonGUI {
             throw new ConnectException();
         }
     }
+
     public  class IncomingReader implements Runnable {
         public void run() {
             try{
@@ -155,6 +181,7 @@ public class ChatClientGUI extends CommonGUI {
                         objectInputStream.close();
                         objectInputStream.close();
                         isConnected = false;
+                        onlineUsersTextArea.setText("");
                         setStateOfField(true);
                         break;
                     }
@@ -234,28 +261,17 @@ public class ChatClientGUI extends CommonGUI {
     }
     public static void main(String args[]) {
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChatClientGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+        } catch (Exception ex) {}
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChatClientGUI().setVisible(true);
+                new ChatClient().setVisible(true);
             }
         });
     }

@@ -1,7 +1,5 @@
 import java.io.Serializable;
-import java.sql.Time;
-import java.util.Calendar;
-import java.util.Date;
+
 
 public class Message implements Serializable{
 
@@ -21,10 +19,6 @@ public class Message implements Serializable{
         this.username = username;
         this.message = message;
         this.typeOfMessage = typeOfMessage;
-    }
-
-    public void setOnlineUsers(String[] users) {
-        this.users = users;
     }
 
     public String getUsername() {
