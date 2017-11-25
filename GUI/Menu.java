@@ -78,7 +78,7 @@ public class Menu extends JFrame {
                                 .addContainerGap(56, Short.MAX_VALUE))
         );
         setVisible(true);
-        //new Server();
+        setLocationRelativeTo(null);
         pack();
     }
 

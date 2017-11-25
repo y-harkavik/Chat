@@ -9,6 +9,7 @@ public class Server extends CommonGUI {
    UsersList userList;
 
     public Server() {
+        userList = new UsersList();
         initComponents();
     }
 
@@ -104,8 +105,8 @@ public class Server extends CommonGUI {
                 }
             }
         } catch (Exception ex) {}
-        pack();
-        //setVisible(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public class ClientHandler implements Runnable {
@@ -152,8 +153,7 @@ public class Server extends CommonGUI {
 
     public void startServer() {
         try {
-            userList = new UsersList();
-            setVisible(true);
+
             repaint();
             ServerSocket socketListener = new ServerSocket(5000);
             while(true) {

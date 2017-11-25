@@ -142,6 +142,7 @@ public class ChatClient extends CommonGUI {
                                                 .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
+
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -150,6 +151,7 @@ public class ChatClient extends CommonGUI {
                 }
             }
         } catch (Exception ex) {}
+        setLocationRelativeTo(null);
         setVisible(true);
         pack();
     }
@@ -260,19 +262,6 @@ public class ChatClient extends CommonGUI {
         usernameField.setEditable(state);
     }
     public static void main(String args[]) {
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (Exception ex) {}
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ChatClient().setVisible(true);
-            }
-        });
+        new ChatClient();
     }
 }
