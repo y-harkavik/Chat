@@ -11,6 +11,8 @@ public class Server extends CommonGUI {
     public Server() {
         userList = new UsersList();
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     private void initComponents() {
@@ -97,6 +99,7 @@ public class Server extends CommonGUI {
                                         .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
+        pack();
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -105,8 +108,6 @@ public class Server extends CommonGUI {
                 }
             }
         } catch (Exception ex) {}
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
 
     public class ClientHandler implements Runnable {

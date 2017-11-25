@@ -23,6 +23,8 @@ public class ChatClient extends CommonGUI {
 
     public ChatClient() {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     private void initComponents() {
@@ -151,8 +153,6 @@ public class ChatClient extends CommonGUI {
                 }
             }
         } catch (Exception ex) {}
-        setLocationRelativeTo(null);
-        setVisible(true);
         pack();
     }
 

@@ -13,6 +13,8 @@ public class Menu extends JFrame {
 
     public Menu() {
         initComponents();
+        setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     private void initComponents() {
@@ -77,8 +79,6 @@ public class Menu extends JFrame {
                                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(56, Short.MAX_VALUE))
         );
-        setVisible(true);
-        setLocationRelativeTo(null);
         pack();
     }
 
