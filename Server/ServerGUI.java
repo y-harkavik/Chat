@@ -12,19 +12,19 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class ServerGUI extends CommonGUI {
-   ArrayList<Client> userList;
+   UsersList userList;
 
     public ServerGUI() {
+        userList = new UsersList();
         initComponents();
+        startServer();
     }
 
     private void initComponents() {
 
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new Dimension(515, 652));
-
 
         try {
             ipTextField.setText(InetAddress.getLocalHost().getHostAddress());
@@ -90,7 +90,6 @@ public class ServerGUI extends CommonGUI {
                                         .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
-        this.startServer();
     }
 
     public class ClientHandler implements Runnable {
@@ -99,17 +98,26 @@ public class ServerGUI extends CommonGUI {
         public ClientHandler(Client c) {
             client = c;
         }
+
         public void run() {
             try{
                 while((message = (Message) client.getThisObjectInputStream().readObject())!=null) {
                     if(message.getTypeOfMessage()==1) {
                         client.setUsername(message.getUsername());
-                        onlineUsersTextArea.setText("");
-                        for (Client user : userList) {
-                            onlineUsersTextArea.append(user.getUsername() + "\n");
+                        if(!userList.addUser(client)) {
+                            client.getThisObjectOutputStream().writeObject(new Message("Server","User with this nickname already connected",0));
+                            client.getThisObjectOutputStream().close();
+                            client.getThisObjectInputStream().close();
+                            break;
                         }
-                        broadcast(message);
+                    }else if(message.getTypeOfMessage()==2) {
+                        userList.deleteUser(client);
+                        broadcast(new Message("Server",message.getUsername()+" "+message.getMessage(),0));
+                        chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
+                        break;
                     }
+                    setOnlineUsers();
+                    broadcast(new Message(message.getUsername(),message.getMessage(),message.getTypeOfMessage(),userList.getUsernameList()));
                     chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
                 }
             }catch(Exception e) {
@@ -118,7 +126,7 @@ public class ServerGUI extends CommonGUI {
         }
     }
     private void broadcast(Message message) {
-        for(Client client:userList) {
+        for(Client client:userList.getUsers()) {
             try {
                 client.getThisObjectOutputStream().writeObject(message);
             }catch(Exception e) {
@@ -130,12 +138,10 @@ public class ServerGUI extends CommonGUI {
     public void startServer() {
         try {
             this.setVisible(true);
-            userList = new ArrayList<Client>();
             ServerSocket socketListener = new ServerSocket(5000);
             while(true) {
                 Socket clientSocket = socketListener.accept();
                 Client client = new Client(clientSocket);
-                userList.add(client);
                 Thread t = new Thread( new ClientHandler(client));
                 t.start();
             }
@@ -147,13 +153,19 @@ public class ServerGUI extends CommonGUI {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Message message = new Message("Server",messageTextArea.getText());
+            Message message = new Message("Server",messageTextArea.getText(),0);
             messageTextArea.setText("");
             messageTextArea.requestFocus();
             broadcast(message);
         }
     }
 
+    public void setOnlineUsers () {
+        onlineUsersTextArea.setText("");
+        for (Client user : userList.getUsers()) {
+            onlineUsersTextArea.append(user.getUsername() + "\n");
+        }
+    }
     public static void main(String args[]) {
         new ServerGUI().setVisible(true);
         try {

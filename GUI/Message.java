@@ -10,15 +10,17 @@ public class Message implements Serializable{
     private String[] users;
     private int typeOfMessage; //1 - connect 0 -usual 2 - disconnect
 
-    public Message(String username,String message, int typeOfMessage) {
+    public Message(String username,String message, int typeOfMessage,String[] users) {
         this.username = username;
         this.message = message;
         this.typeOfMessage = typeOfMessage;
+        this.users = users;
     }
 
-    public Message(String username, String message) {
+    public Message(String username, String message, int typeOfMessage) {
         this.username = username;
         this.message = message;
+        this.typeOfMessage = typeOfMessage;
     }
 
     public void setOnlineUsers(String[] users) {

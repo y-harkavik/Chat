@@ -8,6 +8,15 @@ public class Client {
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
 
+    public boolean equals(Object aClient) {
+        Client a =(Client) aClient;
+        return getUsername().equals(a.getUsername());
+    }
+
+    public int hashcode() {
+        return username.hashCode();
+    }
+
     public Client(Socket socket){
         try {
             this.socket = socket;
