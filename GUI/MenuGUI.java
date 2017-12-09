@@ -1,17 +1,15 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.rmi.server.ServerCloneException;
 
-public class Menu extends JFrame {
+public class MenuGUI extends JFrame {
 
     private JRadioButton clientRadioButton;
     private JRadioButton serverRadioButton;
     private JButton startButton;
     private  ButtonGroup buttonGroup;
 
-    public Menu() {
+    public MenuGUI() {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
@@ -22,9 +20,6 @@ public class Menu extends JFrame {
         serverRadioButton = new JRadioButton();
         clientRadioButton = new JRadioButton();
         startButton = new JButton();
-
-       //setSize(new Dimension(400, 400));
-
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -44,13 +39,14 @@ public class Menu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if(serverRadioButton.isSelected()){
                 Thread t = new Thread(new Runnable() {
-                    @Override
                     public void run() {
+                        setVisible(false);
                         new Server().startServer();
                     }
                 });
                 t.start();
             } else if(clientRadioButton.isSelected()) {
+                    setVisible(false);
                     new ChatClient();
                 }
             }
@@ -82,14 +78,7 @@ public class Menu extends JFrame {
         pack();
     }
 
-    /*public class startButtonListener implements ActionListener{
-
-        public void actionPerformed(ActionEvent e) {
-            new Server().startServer();
-        }
-    }*/
-
     public static void main(String args[]) {
-        new Menu();
+        new MenuGUI();
     }
 }

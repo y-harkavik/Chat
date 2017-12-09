@@ -5,8 +5,9 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server extends CommonGUI {
-   UsersList userList;
+public class Server extends GUI {
+   private UsersList userList;
+   private Message message;
 
     public Server() {
         userList = new UsersList();
@@ -107,7 +108,9 @@ public class Server extends CommonGUI {
                     break;
                 }
             }
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public class ClientHandler implements Runnable {
@@ -119,7 +122,7 @@ public class Server extends CommonGUI {
 
         public void run() {
             try{
-                while((message = (Message) client.getThisObjectInputStream().readObject())!=null) {
+                while((message = (Message) client.getThisObjectInputStream().readObject())!=null) { //1 - connect 0 -usual 2 - disconnect -1 - nickname error
                     if(message.getTypeOfMessage()==1) {
                         client.setUsername(message.getUsername());
                         if(!userList.addUser(client)) {
@@ -140,6 +143,7 @@ public class Server extends CommonGUI {
                     chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
                 }
             }catch(Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -154,8 +158,6 @@ public class Server extends CommonGUI {
 
     public void startServer() {
         try {
-
-            repaint();
             ServerSocket socketListener = new ServerSocket(5000);
             while(true) {
                 Socket clientSocket = socketListener.accept();
@@ -164,7 +166,7 @@ public class Server extends CommonGUI {
                 t.start();
             }
         }catch(Exception e) {
-
+            e.printStackTrace();
         }
     }
     public class sendButtonListener implements ActionListener {

@@ -4,7 +4,6 @@ import java.net.Socket;
 
 public class Client {
     private String username;
-    private Socket socket;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
 
@@ -19,22 +18,11 @@ public class Client {
 
     public Client(Socket socket){
         try {
-            this.socket = socket;
             this.oos = new ObjectOutputStream(socket.getOutputStream());
             this.ois = new ObjectInputStream(socket.getInputStream());
         }catch(Exception e) {
-
+            e.printStackTrace();
         }
-    }
-
-    public Client(Socket socket , ObjectOutputStream oos , ObjectInputStream ois ){
-        this.socket = socket;
-        this.oos = oos;
-        this.ois = ois;
-    }
-
-    public Socket getSocket() {
-        return this.socket;
     }
 
     public ObjectOutputStream getThisObjectOutputStream() {
@@ -53,11 +41,4 @@ public class Client {
         this.username = username;
     }
 
-    public void setThisObjectOutputStream(ObjectOutputStream oos) {
-        this.oos = oos;
-    }
-
-    public void setThisObjectInputStream(ObjectInputStream ois) {
-        this.ois = ois;
-    }
 }

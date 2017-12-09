@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class CommonGUI extends JFrame{
+public class GUI extends JFrame{
     JScrollPane chatScPane;
     JTextArea chatTextArea;
     JTextField ipTextField;
@@ -16,8 +14,8 @@ public class CommonGUI extends JFrame{
     JTextField portTextField;
     JLabel portLabel;
     JButton sendButton;
-    Message message;
-    public CommonGUI() {
+
+    public GUI() {
         ipLabel = new JLabel();
         onlineUsersLabel = new JLabel();
         portLabel = new JLabel();
@@ -47,7 +45,7 @@ public class CommonGUI extends JFrame{
         portLabel.setFont(new Font("Arial", 0, 12));
         portLabel.setText("Port");
 
-        sendButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        sendButton.setFont(new java.awt.Font("Arial", 0, 12));
         sendButton.setText("Send");
         sendButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -63,12 +61,11 @@ public class CommonGUI extends JFrame{
         onlineUsersScPane.setViewportView(onlineUsersTextArea);
 
         messageTextArea.setColumns(20);
-        messageTextArea.setFont(new Font("Arial", 0, 14)); // NOI18N
+        messageTextArea.setFont(new Font("Arial", 0, 14));
         messageTextArea.setLineWrap(true);
         messageTextArea.setRows(5);
         messageTextArea.setToolTipText("");
         messageTextArea.setCursor(new Cursor(Cursor.TEXT_CURSOR));
         messageScPane.setViewportView(messageTextArea);
-
     }
 }

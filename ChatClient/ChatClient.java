@@ -7,18 +7,18 @@ import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class ChatClient extends CommonGUI {
+public class ChatClient extends GUI {
     private JButton connectButton;
     private JButton disconnectButton;
     private JTextField usernameField;
     private JLabel usernameLabel;
     private Message message;
 
-    String username;
-    Socket socket;
-    ObjectOutputStream objectOutputStream;
-    ObjectInputStream objectInputStream;
-    Boolean isConnected = false;
+    private String username;
+    private Socket socket;
+    private ObjectOutputStream objectOutputStream;
+    private ObjectInputStream objectInputStream;
+    private Boolean isConnected = false;
 
 
     public ChatClient() {
@@ -175,9 +175,6 @@ public class ChatClient extends CommonGUI {
         public void run() {
             try{
                 while((message = (Message) objectInputStream.readObject())!=null) {
-                    /*if(message.getTypeOfMessage()!=0) {
-                        onlineUsersTextArea.setText("");
-                    }*/
                     if(message.getTypeOfMessage()==-1) {
                         chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
                         objectInputStream.close();
@@ -216,7 +213,6 @@ public class ChatClient extends CommonGUI {
                 } catch (ConnectException a) {
                     chatTextArea.append("Connect error\n");
                     isConnected=false;
-                    //a.printStackTrace();
                 }
             }
         }
@@ -238,9 +234,9 @@ public class ChatClient extends CommonGUI {
                     sendMessage(new Message(username,"has been disconnected\n",2));
                     objectInputStream.close();
                     objectInputStream.close();
-                    socket.close();
                     setStateOfField(true);
                     onlineUsersTextArea.setText("");
+                    chatTextArea.append("Disconnected\n");
                     isConnected=false;
                 }catch (Exception f) {
 
@@ -252,7 +248,7 @@ public class ChatClient extends CommonGUI {
             try {
                 objectOutputStream.writeObject(message);
             } catch (IOException ex) {
-                chatTextArea.append("hui\n");
+                chatTextArea.append("Disconnect error\n");
             }
     }
 
