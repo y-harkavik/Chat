@@ -45,7 +45,7 @@ public class Server extends GUI {
         portTextField.setEditable(false);
 
         sendButton.addActionListener(new sendButtonListener());
-
+        messageTextArea.addKeyListener(new messageTextAreaListener());
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,14 +171,37 @@ public class Server extends GUI {
     }
     public class sendButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            Message message = new Message("Server",messageTextArea.getText(),0,userList.getUsernameList());
-            messageTextArea.setText("");
-            messageTextArea.requestFocus();
-            broadcast(message);
-            chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
+           sendMessage();
         }
     }
+    public void sendMessage() {
+        Message message = new Message("Server",messageTextArea.getText(),0,userList.getUsernameList());
+        broadcast(message);
+        chatTextArea.append("["+message.getUsername()+"]" + ": " + message.getMessage()+"\n");
+    }
+    public class messageTextAreaListener implements KeyListener {
 
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+                if(e.isControlDown()) {
+                    messageTextArea.append("\n");
+                }else {
+                    sendMessage();
+                    e.consume();
+                    messageTextArea.setText("");
+                    messageTextArea.requestFocus();
+                }
+            }
+        }
+
+        public void keyReleased(KeyEvent e) {
+
+        }
+    }
     public void setOnlineUsers () {
         onlineUsersTextArea.setText("");
         for (Client user : userList.getUsers()) {

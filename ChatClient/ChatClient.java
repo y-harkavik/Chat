@@ -55,6 +55,7 @@ public class ChatClient extends GUI {
             }
         };
         addWindowListener(exitListener);
+        messageTextArea.addKeyListener(new messageTextAreaListener());
 
         setSize(new Dimension(0, 0));
 
@@ -226,7 +227,30 @@ public class ChatClient extends GUI {
             messageTextArea.requestFocus();
         }
     }
+    public class messageTextAreaListener implements KeyListener {
 
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+                    if(e.isControlDown()) {
+                        messageTextArea.append("\n");
+                        return;
+                    }else if(isConnected){
+                        sendMessage(new Message(username,messageTextArea.getText(),0));
+                    }
+                e.consume();
+                messageTextArea.setText("");
+                messageTextArea.requestFocus();
+            }
+        }
+
+        public void keyReleased(KeyEvent e) {
+
+        }
+    }
     public class disconnectionButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if(isConnected) {
@@ -239,7 +263,7 @@ public class ChatClient extends GUI {
                     chatTextArea.append("Disconnected\n");
                     isConnected=false;
                 }catch (Exception f) {
-
+                    f.printStackTrace();
                 }
             }
         }
